@@ -21,18 +21,18 @@ pipeline {
         
     
 // Step 3
-// Step 3
 stage('Build docker image') {
     steps {
         script {
-            // Use visudo to edit the sudoers file
-            sh """
-                echo '${JENKINS_USER} ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
-                docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} .
-            """
+            // Add the Docker user to the sudo group without a password prompt
+            sh "echo '${JENKINS_USER} ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers.d/jenkins"
+            
+            // Re-run the Docker build command without sudo and using -S to read password from standard input
+            sh "echo Stephcurry30$$ | sudo -S docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
         }
     }
 }
+
 
 
         
