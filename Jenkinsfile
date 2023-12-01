@@ -25,7 +25,7 @@ stage('Build docker image') {
     steps {
         script {
        // Re-run the Docker build command without sudo and using -S to read password from standard input
-         sh "sudo docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
+         sh "docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
 
         }
     }
