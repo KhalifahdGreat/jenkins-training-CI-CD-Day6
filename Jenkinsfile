@@ -73,7 +73,7 @@ stage('Build docker image') {
             steps {
         	// bcz tomcat take some sec. to display data , so apply some delay here        
                 retry(30) {
-                    sh 'curl --silent http://54.80.142.136:1223/java-web-app/ |  grep USA'
+                    sh 'curl --silent http://54.80.142.136:1223/java-web-app/ |  grep India'
                 }   
             }
         }
