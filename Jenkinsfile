@@ -9,7 +9,7 @@ pipeline {
         // Step 1
         stage('SCM') {
                 steps {
-                    git 'https://github.com/webdevprashant/jenkins-training-CI-CD-Day6.git'
+                    git 'https://github.com/KhalifahdGreat/jenkins-training-CI-CD-Day6.git'
                 }        
         }
         // Step 2
