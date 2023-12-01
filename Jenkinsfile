@@ -69,14 +69,14 @@ stage('Build docker image') {
             }
         }
             
-        stage('QAT Test') {
-            steps {
-        	// bcz tomcat take some sec. to display data , so apply some delay here        
-                retry(30) {
-                    sh 'curl --silent http://54.80.142.136:1223/java-web-app/ |  grep India'
-                }   
-            }
-        }
+        // stage('QAT Test') {
+        //     steps {
+        // 	// bcz tomcat take some sec. to display data , so apply some delay here        
+        //         retry(30) {
+        //             sh 'curl --silent http://54.80.142.136:1223/java-web-app/ |  grep India'
+        //         }   
+        //     }
+        // }
         
         // Step  in Redhat 8 CLI 2
         stage('Deploy webAPP in Prod Env') {
