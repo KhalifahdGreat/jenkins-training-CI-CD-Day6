@@ -19,12 +19,19 @@ pipeline {
                 }
         }
         
-        // Step 3
-        stage('Build docker image') {
-                steps {
-                    sh "sudo docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
-                }
+    
+// Step 3
+stage('Build docker image') {
+    steps {
+        script {
+            // Add the Docker user to the sudo group without a password prompt
+            sh "echo '${JENKINS_USER} ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers.d/jenkins"
+            // Re-run the Docker build command without sudo
+            sh "docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
         }
+    }
+}
+
         
         // Step 4
         stage('Push docker image') {
