@@ -1,5 +1,9 @@
 pipeline {
     agent {  label "master"    }
+
+    tools {
+    maven 'Maven3'
+  }
     
     stages {
         // Step 1
