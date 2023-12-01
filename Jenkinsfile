@@ -28,7 +28,7 @@ stage('Build docker image') {
             sh "echo '${JENKINS_USER} ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers.d/jenkins"
             
             // Re-run the Docker build command without sudo and using -S to read password from standard input
-           sh "echo Stephcurry30\\$$ | sudo -S docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
+         sh "sudo docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
 
         }
     }
