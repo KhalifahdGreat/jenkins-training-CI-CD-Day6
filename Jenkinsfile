@@ -52,8 +52,8 @@ stage('Build docker image') {
         // Step 5 
         stage('Deploy Java App in  Dev Env') {
                 steps {
-                        sh "sudo docker rm -f myjavaappdevenv"
-                        sh "sudo docker run  -d -p 1222:8080 --name myjavaappdevenv webdevprashant/javaapp-day6:${BUILD_NUMBER}"
+                        sh "docker rm -f myjavaappdevenv"
+                        sh "docker run  -d -p 1222:8080 --name myjavaappdevenv kalidgreat/khalifah-java:1.1.0"
                 }
         }
         
