@@ -24,8 +24,14 @@ pipeline {
 stage('Build docker image') {
     steps {
         script {
-       // Re-run the Docker build command without sudo and using -S to read password from standard input
-         sh "sudo docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
+
+              // Replace 'your-image-name' and 'your-tag' with appropriate values
+                    def dockerImage = "khalidock30/khalifah-java:1.1.0"
+
+                    // Use Dockerfile in the root directory of your project
+                    sh "docker build -t ${dockerImage} ."
+       // // Re-run the Docker build command without sudo and using -S to read password from standard input
+       //   sh "sudo docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
 
         }
     }
