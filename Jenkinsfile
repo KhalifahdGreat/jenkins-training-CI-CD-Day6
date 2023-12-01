@@ -43,9 +43,9 @@ stage('Build docker image') {
         stage('Push docker image') {
                 steps {
                     withCredentials([string(credentialsId: 'Docker_hub_password', variable: 'VAR_FOR_DOCKERPASS')]) {
-                    sh "sudo docker login -u webdevprashant -p $VAR_FOR_DOCKERPASS"
+                    sh "sudo docker login -u khalidock30 -p $VAR_FOR_DOCKERPASS"
                     }
-                    sh "sudo docker push webdevprashant/javaapp-day6:${BUILD_NUMBER}"
+                    sh "sudo docker push khalidock30/khalifah-java:1.1.0"
                 }
         }
         
