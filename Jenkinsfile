@@ -24,11 +24,8 @@ pipeline {
 stage('Build docker image') {
     steps {
         script {
-            // Add the Docker user to the sudo group without a password prompt
-            sh "echo '${JENKINS_USER} ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers.d/jenkins"
-            
-            // Re-run the Docker build command without sudo and using -S to read password from standard input
-         sh "sudo docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
+       // Re-run the Docker build command without sudo and using -S to read password from standard input
+         sh "docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} ."
 
         }
     }
