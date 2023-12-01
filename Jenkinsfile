@@ -26,7 +26,7 @@ stage('Build docker image') {
         script {
 
              
-                    def dockerImage = "khalidock30/khalifah-java:1.1.0"
+                    def dockerImage = "kalidgreat/khalifah-java:1.1.0"
 
                     // Use Dockerfile in the root directory of your project
                     sh "docker build -t ${dockerImage} ."
@@ -43,9 +43,9 @@ stage('Build docker image') {
         stage('Push docker image') {
                 steps {
                     withCredentials([string(credentialsId: 'Docker_hub_password', variable: 'VAR_FOR_DOCKERPASS')]) {
-                    sh "echo ${VAR_FOR_DOCKERPASS} | docker login -u khalidock30 --password-stdin"
+                    sh "echo ${VAR_FOR_DOCKERPASS} | docker login -u kalidgreat --password-stdin"
                     }
-                    sh "docker push khalidock30/khalifah-java:1.1.0"
+                    sh "docker push kalidgreat/khalifah-java:1.1.0"
                 }
         }
         
