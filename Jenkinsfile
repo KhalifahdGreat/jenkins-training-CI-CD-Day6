@@ -86,8 +86,8 @@ stage('Build docker image') {
                         // sh "ssh root@192.168.43.229 docker rm -f myjavaapp"
                         // sh "ssh root@192.168.43.229 docker run  -d -p 8080:8080 --name myjavaapp webdevprashant/javaapp-day6:${BUILD_NUMBER}"                   
                 // }
-                sh "sudo docker rm -f myjavaappprodenv"
-                sh "sudo docker run  -d -p 1224:8080 --name myjavaappprodenv kalidgreat/khalifah-java:1.1.0"  
+                sh "docker rm -f myjavaappprodenv"
+                sh "docker run  -d -p 1224:8080 --name myjavaappprodenv kalidgreat/khalifah-java:1.1.0"  
             }
         }
     }
