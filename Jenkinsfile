@@ -21,23 +21,19 @@ pipeline {
         
     
 // Step 3
+// Step 3
 stage('Build docker image') {
     steps {
         script {
-            // Get the Jenkins user (option 1: USER)
-            def jenkinsUser = env.USER
-
-            // Add the Jenkins user to the sudo group without a password prompt
-            sh "echo '${jenkinsUser} ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers.d/jenkins"
-
-            // Get the build number
-            def buildNumber = env.BUILD_NUMBER
-
-            // Re-run the Docker build command without sudo
-            sh "docker build -t webdevprashant/javaapp-day6:${buildNumber} ."
+            // Use visudo to edit the sudoers file
+            sh """
+                echo '${JENKINS_USER} ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
+                docker build -t webdevprashant/javaapp-day6:${BUILD_NUMBER} .
+            """
         }
     }
 }
+
 
         
         // Step 4
