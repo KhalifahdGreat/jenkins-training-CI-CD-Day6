@@ -73,7 +73,7 @@ stage('Build docker image') {
             steps {
         	// bcz tomcat take some sec. to display data , so apply some delay here        
                 retry(30) {
-                    sh 'curl --silent http://192.168.43.56:1223/java-web-app/ |  grep India'
+                    sh 'curl --silent http://54.80.142.136:1223/java-web-app/ |  grep USA'
                 }   
             }
         }
@@ -87,7 +87,7 @@ stage('Build docker image') {
                         // sh "ssh root@192.168.43.229 docker run  -d -p 8080:8080 --name myjavaapp webdevprashant/javaapp-day6:${BUILD_NUMBER}"                   
                 // }
                 sh "sudo docker rm -f myjavaappprodenv"
-                sh "sudo docker run  -d -p 1224:8080 --name myjavaappprodenv webdevprashant/javaapp-day6:${BUILD_NUMBER}"  
+                sh "sudo docker run  -d -p 1224:8080 --name myjavaappprodenv kalidgreat/khalifah-java:1.1.0"  
             }
         }
     }
