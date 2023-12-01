@@ -43,7 +43,7 @@ stage('Build docker image') {
         stage('Push docker image') {
                 steps {
                     withCredentials([string(credentialsId: 'Docker_hub_password', variable: 'VAR_FOR_DOCKERPASS')]) {
-                    sh "docker login -u khalidock30 -p $VAR_FOR_DOCKERPASS"
+                    sh "echo ${VAR_FOR_DOCKERPASS} | docker login -u khalidock30 --password-stdin"
                     }
                     sh "docker push khalidock30/khalifah-java:1.1.0"
                 }
