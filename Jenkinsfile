@@ -1,6 +1,11 @@
 pipeline {
     agent {  label "master"    }
     
+     tools {
+        // Specify the Git installation by name
+        git 'MyGitInstallation'
+    }
+
     stages {
         // Step 1
         stage('SCM') {
